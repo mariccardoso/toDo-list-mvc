@@ -1,12 +1,16 @@
 import express from 'express';
-import tarefasRouter from './src/routes/tarefaRoutes.js';
+import livroRoutes from './routes/livroRoutes.js';
+const port = process.env.PORT || 3000;
 
 const app = express();
-const PORT = 3000;
 
 app.use(express.json());
-app.use('/tarefas', tarefasRouter);
+app.use('/itens', livroRoutes);
 
-app.listen(PORT, () => {
-    console.log(`✨Arrasou divaaaa, ta rodando na porta ${PORT}`);
+app.get('/', (req, res) => {
+  res.json({ message: 'Olá, está é a minha rota de mensagem'});
+});
+
+app.listen(port, () => {
+  console.log(`Servidor rodando na porta ${port}`);
 });
